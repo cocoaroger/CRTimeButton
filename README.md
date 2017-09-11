@@ -6,7 +6,7 @@
 2. Run `pod install` or `pod update`.
 3. Import <CRTimeButton/CRTimeButton.h>.
 
-### 使用方法
+### Demo
 
 ```
     CRTimeButton *button = [CRTimeButton new];
@@ -25,3 +25,6 @@
         });
     }
 ```
+
+### Snapshot
+![snapshot](snapshot/snapshot.gif)

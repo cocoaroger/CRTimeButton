@@ -14,7 +14,7 @@
 static const CGFloat kNavigationH = 64;
 
 static const CGFloat kButtonX = 100;
-static const CGFloat kButtonMargin = 20;
+static const CGFloat kButtonMargin = 50;
 static const CGFloat kButtonW = 100;
 static const CGFloat kButtonH = 44;
 
@@ -47,7 +47,6 @@ static const CGFloat kButtonH = 44;
                 [button setAgainTitle:@"重新发送"];
                 [button setDuration:30];
                 [button setCounDownPrifex:@"还剩"];
-                button.titleLabel.font = [UIFont systemFontOfSize:14];
                 [button setTitleColor:rgba(100,149,237,1) forState:UIControlStateNormal];
                 [button setTitleColor:rgba(100,149,237,0.5) forState:UIControlStateHighlighted];
                 [button setTitleColor:rgba(192,192,192,1) forState:UIControlStateDisabled];
@@ -63,7 +62,7 @@ static const CGFloat kButtonH = 44;
 
 #pragma mark - CRTimeButtonDelegate
 - (void)timeButtonClicked:(CRTimeButton *)timeButton {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [timeButton resetButton]; // 模拟网络发送失败，重置按钮状态
     });
 }
