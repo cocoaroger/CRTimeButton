@@ -13,7 +13,8 @@
 		DB0D99801F64E2CC00B772E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0D997E1F64E2CC00B772E1 /* Main.storyboard */; };
 		DB0D99821F64E2CC00B772E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB0D99811F64E2CC00B772E1 /* Assets.xcassets */; };
 		DB0D99851F64E2CC00B772E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB0D99831F64E2CC00B772E1 /* LaunchScreen.storyboard */; };
-		DB0D998F1F64E30200B772E1 /* CRTimeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0D998E1F64E30200B772E1 /* CRTimeButton.m */; };
+		DB64E11B20EF110400B931B6 /* CRTimeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB64E11920EF110400B931B6 /* CRTimeButton.m */; };
+		DB64E11D20EF111900B931B6 /* CRTimeButton.podspec in Resources */ = {isa = PBXBuildFile; fileRef = DB64E11C20EF111900B931B6 /* CRTimeButton.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +28,9 @@
 		DB0D99811F64E2CC00B772E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB0D99841F64E2CC00B772E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB0D99861F64E2CC00B772E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB0D998D1F64E30200B772E1 /* CRTimeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTimeButton.h; sourceTree = "<group>"; };
-		DB0D998E1F64E30200B772E1 /* CRTimeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTimeButton.m; sourceTree = "<group>"; };
+		DB64E11920EF110400B931B6 /* CRTimeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTimeButton.m; sourceTree = "<group>"; };
+		DB64E11A20EF110400B931B6 /* CRTimeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTimeButton.h; sourceTree = "<group>"; };
+		DB64E11C20EF111900B931B6 /* CRTimeButton.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CRTimeButton.podspec; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +63,8 @@
 		DB0D99741F64E2CC00B772E1 /* CRTimeButtonDemo */ = {
 			isa = PBXGroup;
 			children = (
-				DB0D998C1F64E30200B772E1 /* CRTimeButton */,
+				DB64E11C20EF111900B931B6 /* CRTimeButton.podspec */,
+				DB64E11820EF110400B931B6 /* CRTimeButton */,
 				DB0D99781F64E2CC00B772E1 /* AppDelegate.h */,
 				DB0D99791F64E2CC00B772E1 /* AppDelegate.m */,
 				DB0D997B1F64E2CC00B772E1 /* ViewController.h */,
@@ -83,14 +86,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DB0D998C1F64E30200B772E1 /* CRTimeButton */ = {
+		DB64E11820EF110400B931B6 /* CRTimeButton */ = {
 			isa = PBXGroup;
 			children = (
-				DB0D998D1F64E30200B772E1 /* CRTimeButton.h */,
-				DB0D998E1F64E30200B772E1 /* CRTimeButton.m */,
+				DB64E11920EF110400B931B6 /* CRTimeButton.m */,
+				DB64E11A20EF110400B931B6 /* CRTimeButton.h */,
 			);
 			path = CRTimeButton;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -150,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB64E11D20EF111900B931B6 /* CRTimeButton.podspec in Resources */,
 				DB0D99851F64E2CC00B772E1 /* LaunchScreen.storyboard in Resources */,
 				DB0D99821F64E2CC00B772E1 /* Assets.xcassets in Resources */,
 				DB0D99801F64E2CC00B772E1 /* Main.storyboard in Resources */,
@@ -164,7 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB0D997D1F64E2CC00B772E1 /* ViewController.m in Sources */,
-				DB0D998F1F64E30200B772E1 /* CRTimeButton.m in Sources */,
+				DB64E11B20EF110400B931B6 /* CRTimeButton.m in Sources */,
 				DB0D997A1F64E2CC00B772E1 /* AppDelegate.m in Sources */,
 				DB0D99771F64E2CC00B772E1 /* main.m in Sources */,
 			);
