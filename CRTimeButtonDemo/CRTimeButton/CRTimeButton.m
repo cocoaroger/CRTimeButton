@@ -16,8 +16,8 @@ static NSString * const kDefaultAgainTitle = @"重新发送";
 @end
 
 @implementation CRTimeButton {
-    NSInteger _countTime; // 倒计时的值
-    dispatch_source_t _timer; // 计时器
+    NSInteger _timeCount; // 倒计时的值
+    NSTimer *_timer; // 计时器
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -39,6 +39,7 @@ static NSString * const kDefaultAgainTitle = @"重新发送";
     _defaultTitle = kDefaultTitle;
     _againTitle = kDefaultAgainTitle;
     _counDownPrifex = @"";
+    _timeCount = 0;
     [self setTitle:_defaultTitle forState:UIControlStateNormal];
     [self addTarget:self action:@selector(timeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -79,58 +80,48 @@ static NSString * const kDefaultAgainTitle = @"重新发送";
 
 - (void)timeButtonAction:(CRTimeButton *)timeButton {
     if ([self.delegate respondsToSelector:@selector(timeButtonClicked:)]) {
-        if (!_countTime) {
-            _countTime = _duration;
-        }
-        
-        dispatch_queue_t queue = dispatch_queue_create("CRTIMEBUTTON_QUEUE", DISPATCH_QUEUE_CONCURRENT);
-        _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-        dispatch_source_set_timer(_timer, DISPATCH_TIME_NOW, 1.f * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
-        dispatch_source_set_event_handler(_timer, ^{
-            _countTime--;
-            if (_countTime > 0) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSString *title = [NSString stringWithFormat:@"%@%@s", _counDownPrifex, @(_countTime)];
-                    [self setTitle:title forState:UIControlStateNormal];
-                    self.enabled = NO;
-                });
-            } else {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self setTitle:_againTitle forState:UIControlStateNormal];
-                    self.enabled = YES;
-                });
-                dispatch_cancel(_timer);
-            }
-        });
-        dispatch_resume(_timer);
-        self.enabled = NO; // 点击按钮后，按钮的状态设置为不可用
+        _timeCount = _duration;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                  target:self
+                                                selector:@selector(timeCounting)
+                                                userInfo:nil
+                                                 repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        [self timeCounting];
         [self.delegate timeButtonClicked:self];
     } else {
-        NSAssert(NO, @"必须设置代理方法!");
+        NSAssert(NO, @"必须设置代理方法才可用!");
+    }
+}
+
+- (void)timeCounting {
+    if (_timeCount > 0) {
+        NSString *title = [NSString stringWithFormat:@"%@%@s", _counDownPrifex, @(_timeCount)];
+        [self setTitle:title forState:UIControlStateNormal];
+        self.enabled = NO;
+        _timeCount--;
+    } else {
+        [self setTitle:_againTitle forState:UIControlStateNormal];
+        self.enabled = YES;
+        [self invalidateTimer];
     }
 }
 
 - (void)invalidateTimer {
     if (_timer) {
-        dispatch_cancel(_timer);
+        [_timer invalidate];
         _timer = NULL;
     }
 }
 
 - (void)resetButton {
-    if (_timer) {
-        dispatch_cancel(_timer);
-        _timer = NULL;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.enabled = YES;
-            _countTime = self.duration;
-            [self setTitle:self.againTitle forState:UIControlStateNormal];
-        });
-    }
+    [self invalidateTimer];
+    self.enabled = YES;
+    [self setTitle:self.againTitle forState:UIControlStateNormal];
 }
 
 - (void)dealloc {
-    NSLog(@"____%@____被释放了", [self class]);
+    NSLog(@"____%@____被释放", [self class]);
 }
 
 @end

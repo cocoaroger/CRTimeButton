@@ -26,7 +26,7 @@ static const CGFloat kButtonH = 44;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = rgba(230, 230, 230, 1);
+    self.view.backgroundColor = rgba(210, 210, 210, 1);
     
     CGFloat firstButtonY = kNavigationH+kButtonMargin;
     for (NSInteger i = 0; i < 2; i ++) {
