@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "CRTimeButton" # 项目名称
-  s.version      = "0.0.2"        # 版本号 与 你仓库的 标签号 对应
+  s.version      = "0.0.3"        # 版本号 与 你仓库的 标签号 对应
   s.license      = { :type => 'MIT', :file => 'LICENSE' }          # 开源证书
   s.summary      = "A Verification Code Time Button" # 项目简介
 
